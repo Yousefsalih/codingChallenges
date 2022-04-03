@@ -1,7 +1,7 @@
-//Practicing working with different data types and values
-let js = "amazing";
-if (js === "amazing") alert("JavaScript is FUN!");
-console.log(49 + 9 + 9 - 15);
+// LECTURE: Values and Variables
+// 1. Declare variables called 'country', 'continent' and 'population' and
+// assign their values according to your own country (population in millions)
+// 2. Log their values to the console
 
 let country = "Turkey";
 let continent = "Asia";
@@ -12,7 +12,18 @@ console.log(continent);
 console.log(population);
 console.log(typeof country);
 
-//Practice working with different operators
+// Coding Challenge #1
+// Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula:
+// BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter).
+// Your tasks:
+// 1. StoreMark'sandJohn'smassandheightinvariables
+// 2. CalculateboththeirBMIsusingtheformula(youcanevenimplementboth
+// versions)
+// 3. CreateaBooleanvariable'markHigherBMI'containinginformationabout
+// whether Mark has a higher BMI than John.
+// Test data:
+// § Data 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
+
 let markWeight = 78;
 let markHeight = 1.69;
 let johnWeight = 92;
