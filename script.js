@@ -1,17 +1,3 @@
-// LECTURE: Values and Variables
-// 1. Declare variables called 'country', 'continent' and 'population' and
-// assign their values according to your own country (population in millions)
-// 2. Log their values to the console
-
-let country = "Turkey";
-let continent = "Asia";
-let population = 84340000;
-
-console.log(country);
-console.log(continent);
-console.log(population);
-console.log(typeof country);
-
 // Coding Challenge #1
 // Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula:
 // BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter).
@@ -51,7 +37,37 @@ if(markBMI > johnBMI){
     console.log(`John's BMI is higher than Mark's!`)
 }
 
-// Coding Challenge #3
+//  Coding Challenge #3
+// Let's go back to Mark and John comparing their BMIs! This time, let's use objects to implement the calculations! Remember: BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter)
+// Your tasks:
+// 1. For each of them,create an object with properties for their full name, mass, and height (Mark Miller and John Smith)
+// 2. Create a' calcBMI' method on each object to calculate the BMI(the same method on both objects). Store the BMI value to a property, and also return it from the method
+// 3. Log to the console who has the higher BMI,together with the full name and the respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
+// Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
+
+const markObject = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function () {
+        BMI = this.mass / this.height **2
+        return BMI
+    }
+}
+
+const johnObject = {
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function () {
+        BMI = this.mass / this.height **2
+        return BMI
+    }
+}
+
+markObject.calcBMI > johnObject.calcBMI ? console.log(`${markObject.fullName}'s BMI (${markObject.calcBMI()}) is higher than ${johnObject.fullName}'s BMI (${johnObject.calcBMI()}) `) : (`${johnObject.fullName}'s BMI (${johnObject.calcBMI()}) is higher than ${markObject.fullName}'s BMI (${markObject.calcBMI()}) `)
+
+// Coding Challenge #4
 // There are two gymnastics teams, Dolphins and Koalas. They compete against each other 3 times. The winner with the highest average score wins a trophy!
 // Your tasks:
 // 1. Calculate the average score for each team,using the test data below
@@ -75,7 +91,7 @@ if(averageDolphinScore > averageKoalaScore && averageDolphinScore >= minimumScor
     {console.log('Koalas Win!')} 
     else {console.log('No one wins!')}
 
-    // Coding Challenge #4
+    // Coding Challenge #5
     // Back to the two gymnastics teams, the Dolphins and the Koalas! There is a new gymnastics discipline, which works differently.
     // Each team competes 3 times, and then the average of the 3 scores is calculated (so one average score per team).
     // A team only wins if it has at least double the average score of the other team. Otherwise, no team wins!
@@ -115,7 +131,7 @@ if(averageDolphinScore > averageKoalaScore && averageDolphinScore >= minimumScor
 
     checkWinner(avgDolphins,avgKoalas);
 
-        // Coding Challenge #5
+        // Coding Challenge #6
     // Steven wants to build a very simple tip calculator for whenever he goes eating in a restaurant. In his country, it's usual to tip 15% if the bill value is between 50 and 300. If the value is different, the tip is 20%.
     // Your tasks:
     // 1. Calculate the tip,depending on the bill value.Create a variable called 'tip' for this. It's not allowed to use an if/else statement 😅 (If it's easier for you, you can start with an if/else statement, and then try to convert it to a ternary operator!)
@@ -129,7 +145,7 @@ if(averageDolphinScore > averageKoalaScore && averageDolphinScore >= minimumScor
 
     console.log(`The bill was ${billValue}, the tip is ${tip} and the final value ${finalValue}`)
 
-    // Coding Challenge #6
+    // Coding Challenge #7
     // Steven is still building his tip calculator, using the same rules as before: Tip 15% of the bill if the bill value is between 50 and 300, and if the value is different, the tip is 20%.
     // Your tasks:
     // 1. Write a function 'calcTip' that takes any bill value as an input and returns the corresponding tip, calculated based on the rules above (you can check out the code from first tip calculator challenge if you need to). Use the function type you like the most. Test the function using a bill value of 100
@@ -147,5 +163,3 @@ if(averageDolphinScore > averageKoalaScore && averageDolphinScore >= minimumScor
     console.log(bills, tips);
     const total = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2] ]
     console.log(total)
-
-    
