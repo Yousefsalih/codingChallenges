@@ -3,9 +3,9 @@
 // BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter).
 // Your tasks:
 // 1. StoreMark'sandJohn'smassandheightinvariables
-// 2. CalculateboththeirBMIsusingtheformula(youcanevenimplementboth
+// 2. Calculate both their BMIs using the formula(youcanevenimplementboth
 // versions)
-// 3. CreateaBooleanvariable'markHigherBMI'containinginformationabout
+// 3. Create a Boolean variable 'markHigherBMI' containing information about
 // whether Mark has a higher BMI than John.
 // Test data:
 // § Data 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
@@ -139,11 +139,23 @@ if(averageDolphinScore > averageKoalaScore && averageDolphinScore >= minimumScor
     // Test data:
     // § Data 1: Test for bill values 275, 40 and 430 
 
-    let billValue = 100
-    let tip = billValue >= 50 && billValue <= 300 ? 0.15 * billValue : 0.2 * billValue
-    let finalValue = billValue + tip
+    let billValue = 275;
+    let tip = billValue >= 50 && billValue <= 300 ? 0.15 * billValue : 0.2 * billValue;
+    let finalValue = billValue + tip;
 
-    console.log(`The bill was ${billValue}, the tip is ${tip} and the final value ${finalValue}`)
+    console.log(`The bill was ${billValue}, the tip is ${tip} and the final value ${finalValue}`);
+
+    billValue = 40;
+    tip = billValue >= 50 && billValue <= 300 ? 0.15 * billValue : 0.2 * billValue;
+    finalValue = billValue + tip;
+    console.log(`The bill was ${billValue}, the tip is ${tip} and the final value ${finalValue}`);
+
+    billValue = 430;
+    tip = billValue >= 50 && billValue <= 300 ? 0.15 * billValue : 0.2 * billValue;
+    finalValue = billValue + tip;
+    console.log(`The bill was ${billValue}, the tip is ${tip} and the final value ${finalValue}`);
+    
+
 
     // Coding Challenge #7
     // Steven is still building his tip calculator, using the same rules as before: Tip 15% of the bill if the bill value is between 50 and 300, and if the value is different, the tip is 20%.
