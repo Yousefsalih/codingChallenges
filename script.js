@@ -79,8 +79,10 @@ markObject.calcBMI > johnObject.calcBMI ? console.log(`${markObject.fullName}'s 
 // Test data:
 // § Data 1: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110
 
-let averageDolphinScore = (96+108+89)/3
-let averageKoalaScore = (88+91+110)/3
+const calcAverageScore = (a, b, c) => (a + b + c) / 3
+
+let averageDolphinScore = calcAverageScore(96, 108, 89);
+let averageKoalaScore = calcAverageScore(88, 91, 110);
 let minimumScore = 100
 
 if(averageDolphinScore > averageKoalaScore && averageDolphinScore >= minimumScore) {
@@ -121,9 +123,9 @@ if(averageDolphinScore > averageKoalaScore && averageDolphinScore >= minimumScor
     console.log(avgDolphins,avgKoalas)
 
     const checkWinner = function (avgDolphins, avgKoalas) {
-        if (avgDolphins >=2 * avgKoalas) {
+        if (avgDolphins >= 2 * avgKoalas) {
             console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`)
-        } else if (avgKoalas >=2 * avgDolphins) {
+        } else if (avgKoalas >= 2 * avgDolphins) {
             console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`)
         }
         else {console.log(`No winner!`)}
@@ -173,8 +175,8 @@ if(averageDolphinScore > averageKoalaScore && averageDolphinScore >= minimumScor
     const bills = [125, 555, 44];
     const tips = [calcTip(bills[0]), calcTip(bills[1]) ,calcTip(bills[2])];
     console.log(bills, tips);
-    const total = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2] ]
-    console.log(total)
+    const total = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2] ];
+    console.log(total);
     
 // Coding Challenge #8
 // Let's improve Steven's tip calculator even more, this time using loops!
