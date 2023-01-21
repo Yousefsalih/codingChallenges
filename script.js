@@ -53,7 +53,7 @@ const markObject = {
         BMI = this.mass / this.height **2
         return BMI
     }
-}
+};
 
 const johnObject = {
     fullName: 'John Smith',
@@ -63,9 +63,15 @@ const johnObject = {
         BMI = this.mass / this.height **2
         return BMI
     }
-}
+};
 
-markObject.calcBMI > johnObject.calcBMI ? console.log(`${markObject.fullName}'s BMI (${markObject.calcBMI()}) is higher than ${johnObject.fullName}'s BMI (${johnObject.calcBMI()}) `) : (`${johnObject.fullName}'s BMI (${johnObject.calcBMI()}) is higher than ${markObject.fullName}'s BMI (${markObject.calcBMI()}) `)
+const CalculationBMIMark = markObject.calcBMI();
+const CalculationBMIJohn = johnObject.calcBMI();
+
+console.log(CalculationBMIMark);
+console.log(CalculationBMIJohn);
+
+CalculationBMIMark > CalculationBMIJohn ? console.log(`${markObject.fullName}'s BMI (${CalculationBMIMark}) is higher than ${johnObject.fullName}'s BMI (${CalculationBMIJohn}) `) : (`${johnObject.fullName}'s BMI (${CalculationBMIJohn}) is higher than ${markObject.fullName}'s BMI (${CalculationBMIMark}) `);
 
 // Coding Challenge #4
 // There are two gymnastics teams, Dolphins and Koalas. They compete against each other 3 times. The winner with the highest average score wins a trophy!
