@@ -216,7 +216,9 @@ console.log(totalz);
 const calcAverage2 = function (arr) {
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
-        sum += arr[i]; //same as sum = sum + arr[i];
+        if (!isNaN(arr[i])) {
+          sum += arr[i]; //same as sum = sum + arr[i];
+        } else{continue}
     }
     // console.log(sum)
     return sum / arr.length;
@@ -225,3 +227,4 @@ const calcAverage2 = function (arr) {
 console.log(calcAverage2([2, 3, 6]));
 console.log(calcAverage2(totalz));
 console.log(calcAverage2(tipz));
+console.log(calcAverage2([6, 2]));
