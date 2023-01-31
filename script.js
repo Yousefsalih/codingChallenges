@@ -388,7 +388,7 @@ console.log(players1Final);
 const {odds: {team1, x: draw, team2}} = game;
 
 //#6 Creating the function
-const printGoals = function (...playersScored) { //using REST parameters.
+const printGoals = function (...playersScored) { //using REST parameters. playersScored is now an array.
   console.log(`${playersScored.length} goals were scored`);
 };
 
@@ -401,3 +401,57 @@ printGoals(...game.scored); //4 goals were scored (using the spread operator)
 //#7
 team1 < team2 && console.log('Team 1 is more likely to win'); //The && operator takes the first truthy value. Therefore, since it is true that team 2 (6.5) is greater than team 1 (1.33). Otherwise nothing would happen.
 team1 > team2 && console.log('Team 2 is more likely to win'); //Nothing happens because there is no truthy value using the && operator.
+
+
+//Coding Challange #11
+
+//Let's continue with our football betting app! Keep using the 'game' variable from before.
+// Your tasks:
+// 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+// 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+// 3. Print the 3 odds to the console,but in a nice formatted way,exactly like this:
+// Odd of victory Bayern Munich: 1.33 
+// Odd of draw: 3.25
+// Odd of victory Borrussia Dortmund: 6.5
+// Get the team names directly from the game object, don't hardcode them (except for "draw"). Hint: Note how the odds and the game objects have the same property names 😉
+
+//#1
+for (let i = 0; i < game.scored.length; i++ ){
+  console.log(`Goal ${i + 1}: ${game.scored[i]}`);
+};
+
+//Alternative way
+for(const [i, player] of game.scored.entries()) //i is the key number whereas player is the value. We use entries method because it is an array. 
+console.log(`Goal ${i + 1}: ${player}`); //Produces same result as above
+
+//2. 
+let average = 0;
+for (const odd of Object.values(game.odds))
+average += odd; //Average = Average + odd
+average /= Object.values(game.odds).length // Average = Average divided by Object
+console.log(average);
+
+// const valuesOdds = Object.values(game.odds)
+
+// console.log(valuesOdds); //1.33m 3.25, 6.5
+
+// let sum = 0;
+
+// const sumArray = function(valuesOdds) {
+// for (let i = 0; i <= valuesOdds.length; i++ ){
+//   sum += valuesOdds[i]
+// };
+// console.log(sum);
+// return sum / 3
+// };
+
+// sumArray(valuesOdds);
+
+//3.
+
+for (const [team, odd] of Object.entries(game.odds)) { //The difference between this and line 422 is that this is an object versus the other is an array so the first property is a key number for an array whereas it is the property name for the object. We use Object.entries and pass the object into the function.
+  const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`
+  console.log(`Odd of ${teamStr} : ${odd}`);
+  // console.log(team, odd);
+};
+
