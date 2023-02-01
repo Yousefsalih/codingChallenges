@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // // Coding Challenge #1
 // // Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula:
 // // BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter).
@@ -367,8 +367,7 @@ const [gk, ...fieldPlayers] = players1; //Creates 2 different arrays
 console.log(gk, fieldPlayers);
 
 //#3 Using spread operator
-const allPlayers = [...players1, ...players2]
-
+const allPlayers = [...players1, ...players2];
 
 console.log(players1);
 console.log(players2);
@@ -376,7 +375,7 @@ console.log(fieldPlayers);
 console.log(allPlayers);
 
 //#4 combine an array with additional values
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic']
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 console.log(players1Final);
 
 //#5 Before destructuring
@@ -385,15 +384,18 @@ console.log(players1Final);
 // const team2 = game.odds.team2;
 
 //After destructuring
-const {odds: {team1, x: draw, team2}} = game;
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
 
 //#6 Creating the function
-const printGoals = function (...playersScored) { //using REST parameters. playersScored is now an array.
+const printGoals = function (...playersScored) {
+  //using REST parameters. playersScored is now an array.
   console.log(`${playersScored.length} goals were scored`);
 };
 
 //To test the function
-printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich') //4 goals were scored
+printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich'); //4 goals were scored
 printGoals('Davies', 'Muller'); //2 goals were scored
 printGoals(game.scored); //This returns the array that contains the names of the scorers which is why it is 1 goals were scored
 printGoals(...game.scored); //4 goals were scored (using the spread operator)
@@ -402,7 +404,6 @@ printGoals(...game.scored); //4 goals were scored (using the spread operator)
 team1 < team2 && console.log('Team 1 is more likely to win'); //The && operator takes the first truthy value. Therefore, since it is true that team 2 (6.5) is greater than team 1 (1.33). Otherwise nothing would happen.
 team1 > team2 && console.log('Team 2 is more likely to win'); //Nothing happens because there is no truthy value using the && operator.
 
-
 //Coding Challange #11
 
 //Let's continue with our football betting app! Keep using the 'game' variable from before.
@@ -410,25 +411,24 @@ team1 > team2 && console.log('Team 2 is more likely to win'); //Nothing happens 
 // 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
 // 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
 // 3. Print the 3 odds to the console,but in a nice formatted way,exactly like this:
-// Odd of victory Bayern Munich: 1.33 
+// Odd of victory Bayern Munich: 1.33
 // Odd of draw: 3.25
 // Odd of victory Borrussia Dortmund: 6.5
 // Get the team names directly from the game object, don't hardcode them (except for "draw"). Hint: Note how the odds and the game objects have the same property names 😉
 
 //#1
-for (let i = 0; i < game.scored.length; i++ ){
+for (let i = 0; i < game.scored.length; i++) {
   console.log(`Goal ${i + 1}: ${game.scored[i]}`);
-};
+}
 
 //Alternative way
-for(const [i, player] of game.scored.entries()) //i is the key number whereas player is the value. We use entries method because it is an array. 
-console.log(`Goal ${i + 1}: ${player}`); //Produces same result as above
+for (const [i, player] of game.scored.entries()) //i is the key number whereas player is the value. We use entries method because it is an array.
+  console.log(`Goal ${i + 1}: ${player}`); //Produces same result as above
 
-//2. 
+//2.
 let average = 0;
-for (const odd of Object.values(game.odds))
-average += odd; //Average = Average + odd
-average /= Object.values(game.odds).length // Average = Average divided by Object
+for (const odd of Object.values(game.odds)) average += odd; //Average = Average + odd
+average /= Object.values(game.odds).length; // Average = Average divided by Object
 console.log(average);
 
 // const valuesOdds = Object.values(game.odds)
@@ -449,9 +449,71 @@ console.log(average);
 
 //3.
 
-for (const [team, odd] of Object.entries(game.odds)) { //The difference between this and line 422 is that this is an object versus the other is an array so the first property is a key number for an array whereas it is the property name for the object. We use Object.entries and pass the object into the function.
-  const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`
+for (const [team, odd] of Object.entries(game.odds)) {
+  //The difference between this and line 422 is that this is an object versus the other is an array so the first property is a key number for an array whereas it is the property name for the object. We use Object.entries and pass the object into the function.
+  const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`;
   console.log(`Odd of ${teamStr} : ${odd}`);
   // console.log(team, odd);
+}
+
+//Coding Challange #12
+
+//Let's continue with our football betting app! This time, we have a map called 'gameEvents' (see below) with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+// Your tasks:
+// 1. Create an array 'events' of the different game events that happened (no duplicates)
+// 2. After the game has finished, it was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+// 3. Compute and log the following string to the console:"An event happened,on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// 4. Loop over 'gameEvents' and log each element to the console,marking whether it's in the first half or second half (after 45 min) of the game, like this:
+// [FIRST HALF] 17: ⚽   GOAL
+
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+console.log(gameEvents);
+
+//#1
+// const events = new Set(gameEvents.values()); Convert to a set
+const events = [...new Set(gameEvents.values())]; //Convert set to an array
+console.log(events);
+
+//#2
+gameEvents.delete(64); //Removes 64 minute event
+
+//#3
+//The total game time (90 minutes)  divided by number of events
+const totalGame = 90;
+const calcMinuteEvent = totalGame / gameEvents.size
+console.log(calcMinuteEvent);
+console.log(`An event happened, on average, every ${calcMinuteEvent} minutes`);
+
+const time = [...gameEvents.keys()].pop(); //.pop() returns the element removed
+console.log(time); //92
+
+console.log(`An event happened, on average, every ${time / gameEvents.size} minutes`); //To make it more accurate
+
+
+//#4
+for (const [min, event] of gameEvents) {
+  //Using ternary operator
+  //const half = min <= 45? 'FIRST' : 'SECOND'
+  //console.log(`[${half} ${min}]: ${event}`)
+  if (min < 45) {
+    console.log(`[First Half] ${min}: ${event}`);
+  } else {
+    console.log(`[Second Half] ${min}: ${event}`);
+  }
 };
+
+
 
