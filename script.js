@@ -515,5 +515,59 @@ for (const [min, event] of gameEvents) {
   }
 };
 
+//coding challange #13
+// Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+// The input will come from a textarea inserted into the DOM (see code below to insert the elements), and conversion will happen when the button is pressed.
+// Test data (pasted to textarea, including spaces):
+// underscore_case
+//  first_name
+// Some_Variable
+//   calculate_AGE
+// delayed_departure
+// Should produce this output (5 separate console.log outputs): 
+// underscoreCase ✅
+// firstName ✅ ✅
+// someVariable ✅ ✅ ✅
+// calculateAge ✅ ✅ ✅ ✅
+// delayedDeparture ✅ ✅ ✅ ✅ ✅
+// Hints:
+// § Remember which character defines a new line in the textarea 😉
+// § The solution only needs to work for a variable made out of 2 words, like a_b
+// § Start without worrying about the ✅. Tackle that only after you have the variable
+// name conversion working 😉
+// Afterwards, test with your own test data! GOOD LUCK 😀
 
 
+document.body.append(document.createElement('textarea')); //creates textarea
+document.body.append(document.createElement('button'));//creates button
+
+document.querySelector('button').addEventListener('click', function () { //add event listener that takes the value from the text area
+  const text = document.querySelector('textarea').value;
+  console.log(text);
+  const rows = text.split('\n') //creates an array where it removes the enter
+  console.log(rows); //Array(5) [ "first_name", "Some_Variable", "  calculate_AGE", "delayed_departure", "" ]
+
+//   for (const row of rows) {
+//     const [first, second] = row.toLowerCase().trim().split('_'); //Creates an array with 2 words by splitting anything _. Then everything is lowercased and trimmed by removing the whitespace.
+//     // console.log(row, first, second); //Ex for the first row: first_name first name
+//     const output = `${first}${second.replace(
+//       second[0],
+//       second[0].toUpperCase() //replace the second word with an uppercase
+//     )}`;
+//     // console.log(output);
+//     console.log(`${output.padEnd(20)}✅`);
+//   }
+// });
+
+
+  for (const [i, row] of rows.entries()) { //row.entries() allows us to access the array
+    const [first, second] = row.toLowerCase().trim().split('_'); //Creates an array with 2 words by splitting anything _. Then everything is lowercased and trimmed by removing the whitespace.
+    // console.log(row, first, second); //Ex for the first row: first_name first name
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase() //replace the second word with an uppercase
+    )}`;
+    // console.log(output);
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`); //insert the index
+  }
+});
