@@ -296,54 +296,54 @@
 // 7. The team with the lower odd is more likely to win.Print to the console which team is more likely to win, without using an if/else statement or the ternary operator.
 // Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
 
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
-//#1
-//Before destructuring
-// const players1 = game.players[0];
-// const players2 = game.players[1];
+// //#1
+// //Before destructuring
+// // const players1 = game.players[0];
+// // const players2 = game.players[1];
 
-//Destructuring
-const [players1, players2] = game.players;
+// //Destructuring
+// const [players1, players2] = game.players;
 
 //#2
 //Before REST
@@ -363,189 +363,189 @@ const [players1, players2] = game.players;
 // ];
 
 //#After REST
-const [gk, ...fieldPlayers] = players1; //Creates 2 different arrays
-console.log(gk, fieldPlayers);
+// const [gk, ...fieldPlayers] = players1; //Creates 2 different arrays
+// console.log(gk, fieldPlayers);
 
-//#3 Using spread operator
-const allPlayers = [...players1, ...players2];
+// //#3 Using spread operator
+// const allPlayers = [...players1, ...players2];
 
-console.log(players1);
-console.log(players2);
-console.log(fieldPlayers);
-console.log(allPlayers);
+// console.log(players1);
+// console.log(players2);
+// console.log(fieldPlayers);
+// console.log(allPlayers);
 
-//#4 combine an array with additional values
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
-console.log(players1Final);
+// //#4 combine an array with additional values
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+// console.log(players1Final);
 
-//#5 Before destructuring
-// const team1 = game.odds.team1;
-// const draw = game.odds.x;
-// const team2 = game.odds.team2;
+// //#5 Before destructuring
+// // const team1 = game.odds.team1;
+// // const draw = game.odds.x;
+// // const team2 = game.odds.team2;
 
-//After destructuring
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
+// //After destructuring
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
 
-//#6 Creating the function
-const printGoals = function (...playersScored) {
-  //using REST parameters. playersScored is now an array.
-  console.log(`${playersScored.length} goals were scored`);
-};
-
-//To test the function
-printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich'); //4 goals were scored
-printGoals('Davies', 'Muller'); //2 goals were scored
-printGoals(game.scored); //This returns the array that contains the names of the scorers which is why it is 1 goals were scored
-printGoals(...game.scored); //4 goals were scored (using the spread operator)
-
-//#7
-team1 < team2 && console.log('Team 1 is more likely to win'); //The && operator takes the first truthy value. Therefore, since it is true that team 2 (6.5) is greater than team 1 (1.33). Otherwise nothing would happen.
-team1 > team2 && console.log('Team 2 is more likely to win'); //Nothing happens because there is no truthy value using the && operator.
-
-//Coding Challange #11
-
-//Let's continue with our football betting app! Keep using the 'game' variable from before.
-// Your tasks:
-// 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
-// 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
-// 3. Print the 3 odds to the console,but in a nice formatted way,exactly like this:
-// Odd of victory Bayern Munich: 1.33
-// Odd of draw: 3.25
-// Odd of victory Borrussia Dortmund: 6.5
-// Get the team names directly from the game object, don't hardcode them (except for "draw"). Hint: Note how the odds and the game objects have the same property names 😉
-
-//#1
-for (let i = 0; i < game.scored.length; i++) {
-  console.log(`Goal ${i + 1}: ${game.scored[i]}`);
-}
-
-//Alternative way
-for (const [i, player] of game.scored.entries()) //i is the key number whereas player is the value. We use entries method because it is an array.
-  console.log(`Goal ${i + 1}: ${player}`); //Produces same result as above
-
-//2.
-let average = 0;
-for (const odd of Object.values(game.odds)) average += odd; //Average = Average + odd
-average /= Object.values(game.odds).length; // Average = Average divided by Object
-console.log(average);
-
-// const valuesOdds = Object.values(game.odds)
-
-// console.log(valuesOdds); //1.33m 3.25, 6.5
-
-// let sum = 0;
-
-// const sumArray = function(valuesOdds) {
-// for (let i = 0; i <= valuesOdds.length; i++ ){
-//   sum += valuesOdds[i]
-// };
-// console.log(sum);
-// return sum / 3
+// //#6 Creating the function
+// const printGoals = function (...playersScored) {
+//   //using REST parameters. playersScored is now an array.
+//   console.log(`${playersScored.length} goals were scored`);
 // };
 
-// sumArray(valuesOdds);
+// //To test the function
+// printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich'); //4 goals were scored
+// printGoals('Davies', 'Muller'); //2 goals were scored
+// printGoals(game.scored); //This returns the array that contains the names of the scorers which is why it is 1 goals were scored
+// printGoals(...game.scored); //4 goals were scored (using the spread operator)
 
-//3.
+// //#7
+// team1 < team2 && console.log('Team 1 is more likely to win'); //The && operator takes the first truthy value. Therefore, since it is true that team 2 (6.5) is greater than team 1 (1.33). Otherwise nothing would happen.
+// team1 > team2 && console.log('Team 2 is more likely to win'); //Nothing happens because there is no truthy value using the && operator.
 
-for (const [team, odd] of Object.entries(game.odds)) {
-  //The difference between this and line 422 is that this is an object versus the other is an array so the first property is a key number for an array whereas it is the property name for the object. We use Object.entries and pass the object into the function.
-  const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`;
-  console.log(`Odd of ${teamStr} : ${odd}`);
-  // console.log(team, odd);
-}
+// //Coding Challange #11
 
-//Coding Challange #12
+// //Let's continue with our football betting app! Keep using the 'game' variable from before.
+// // Your tasks:
+// // 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+// // 2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+// // 3. Print the 3 odds to the console,but in a nice formatted way,exactly like this:
+// // Odd of victory Bayern Munich: 1.33
+// // Odd of draw: 3.25
+// // Odd of victory Borrussia Dortmund: 6.5
+// // Get the team names directly from the game object, don't hardcode them (except for "draw"). Hint: Note how the odds and the game objects have the same property names 😉
 
-//Let's continue with our football betting app! This time, we have a map called 'gameEvents' (see below) with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
-// Your tasks:
-// 1. Create an array 'events' of the different game events that happened (no duplicates)
-// 2. After the game has finished, it was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
-// 3. Compute and log the following string to the console:"An event happened,on average, every 9 minutes" (keep in mind that a game has 90 minutes)
-// 4. Loop over 'gameEvents' and log each element to the console,marking whether it's in the first half or second half (after 45 min) of the game, like this:
-// [FIRST HALF] 17: ⚽   GOAL
+// //#1
+// for (let i = 0; i < game.scored.length; i++) {
+//   console.log(`Goal ${i + 1}: ${game.scored[i]}`);
+// }
 
-const gameEvents = new Map([
-  [17, '⚽ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽ GOAL'],
-  [80, '⚽ GOAL'],
-  [92, '🔶 Yellow card'],
-]);
+// //Alternative way
+// for (const [i, player] of game.scored.entries()) //i is the key number whereas player is the value. We use entries method because it is an array.
+//   console.log(`Goal ${i + 1}: ${player}`); //Produces same result as above
 
-console.log(gameEvents);
+// //2.
+// let average = 0;
+// for (const odd of Object.values(game.odds)) average += odd; //Average = Average + odd
+// average /= Object.values(game.odds).length; // Average = Average divided by Object
+// console.log(average);
 
-//#1
-// const events = new Set(gameEvents.values()); Convert to a set
-const events = [...new Set(gameEvents.values())]; //Convert set to an array
-console.log(events);
+// // const valuesOdds = Object.values(game.odds)
 
-//#2
-gameEvents.delete(64); //Removes 64 minute event
+// // console.log(valuesOdds); //1.33m 3.25, 6.5
 
-//#3
-//The total game time (90 minutes)  divided by number of events
-const totalGame = 90;
-const calcMinuteEvent = totalGame / gameEvents.size
-console.log(calcMinuteEvent);
-console.log(`An event happened, on average, every ${calcMinuteEvent} minutes`);
+// // let sum = 0;
 
-const time = [...gameEvents.keys()].pop(); //.pop() returns the element removed
-console.log(time); //92
+// // const sumArray = function(valuesOdds) {
+// // for (let i = 0; i <= valuesOdds.length; i++ ){
+// //   sum += valuesOdds[i]
+// // };
+// // console.log(sum);
+// // return sum / 3
+// // };
 
-console.log(`An event happened, on average, every ${time / gameEvents.size} minutes`); //To make it more accurate
+// // sumArray(valuesOdds);
+
+// //3.
+
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   //The difference between this and line 422 is that this is an object versus the other is an array so the first property is a key number for an array whereas it is the property name for the object. We use Object.entries and pass the object into the function.
+//   const teamStr = team === 'x' ? 'draw' : `Victory ${game[team]}`;
+//   console.log(`Odd of ${teamStr} : ${odd}`);
+//   // console.log(team, odd);
+// }
+
+// //Coding Challange #12
+
+// //Let's continue with our football betting app! This time, we have a map called 'gameEvents' (see below) with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+// // Your tasks:
+// // 1. Create an array 'events' of the different game events that happened (no duplicates)
+// // 2. After the game has finished, it was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+// // 3. Compute and log the following string to the console:"An event happened,on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// // 4. Loop over 'gameEvents' and log each element to the console,marking whether it's in the first half or second half (after 45 min) of the game, like this:
+// // [FIRST HALF] 17: ⚽   GOAL
+
+// const gameEvents = new Map([
+//   [17, '⚽ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽ GOAL'],
+//   [80, '⚽ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
+
+// console.log(gameEvents);
+
+// //#1
+// // const events = new Set(gameEvents.values()); Convert to a set
+// const events = [...new Set(gameEvents.values())]; //Convert set to an array
+// console.log(events);
+
+// //#2
+// gameEvents.delete(64); //Removes 64 minute event
+
+// //#3
+// //The total game time (90 minutes)  divided by number of events
+// const totalGame = 90;
+// const calcMinuteEvent = totalGame / gameEvents.size
+// console.log(calcMinuteEvent);
+// console.log(`An event happened, on average, every ${calcMinuteEvent} minutes`);
+
+// const time = [...gameEvents.keys()].pop(); //.pop() returns the element removed
+// console.log(time); //92
+
+// console.log(`An event happened, on average, every ${time / gameEvents.size} minutes`); //To make it more accurate
 
 
-//#4
-for (const [min, event] of gameEvents) {
-  //Using ternary operator
-  //const half = min <= 45? 'FIRST' : 'SECOND'
-  //console.log(`[${half} ${min}]: ${event}`)
-  if (min < 45) {
-    console.log(`[First Half] ${min}: ${event}`);
-  } else {
-    console.log(`[Second Half] ${min}: ${event}`);
-  }
-};
+// //#4
+// for (const [min, event] of gameEvents) {
+//   //Using ternary operator
+//   //const half = min <= 45? 'FIRST' : 'SECOND'
+//   //console.log(`[${half} ${min}]: ${event}`)
+//   if (min < 45) {
+//     console.log(`[First Half] ${min}: ${event}`);
+//   } else {
+//     console.log(`[Second Half] ${min}: ${event}`);
+//   }
+// };
 
-//coding challange #13
-// Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
-// The input will come from a textarea inserted into the DOM (see code below to insert the elements), and conversion will happen when the button is pressed.
-// Test data (pasted to textarea, including spaces):
-// underscore_case
-//  first_name
-// Some_Variable
-//   calculate_AGE
-// delayed_departure
-// Should produce this output (5 separate console.log outputs): 
-// underscoreCase ✅
-// firstName ✅ ✅
-// someVariable ✅ ✅ ✅
-// calculateAge ✅ ✅ ✅ ✅
-// delayedDeparture ✅ ✅ ✅ ✅ ✅
-// Hints:
-// § Remember which character defines a new line in the textarea 😉
-// § The solution only needs to work for a variable made out of 2 words, like a_b
-// § Start without worrying about the ✅. Tackle that only after you have the variable
-// name conversion working 😉
-// Afterwards, test with your own test data! GOOD LUCK 😀
+// //coding challange #13
+// // Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+// // The input will come from a textarea inserted into the DOM (see code below to insert the elements), and conversion will happen when the button is pressed.
+// // Test data (pasted to textarea, including spaces):
+// // underscore_case
+// //  first_name
+// // Some_Variable
+// //   calculate_AGE
+// // delayed_departure
+// // Should produce this output (5 separate console.log outputs): 
+// // underscoreCase ✅
+// // firstName ✅ ✅
+// // someVariable ✅ ✅ ✅
+// // calculateAge ✅ ✅ ✅ ✅
+// // delayedDeparture ✅ ✅ ✅ ✅ ✅
+// // Hints:
+// // § Remember which character defines a new line in the textarea 😉
+// // § The solution only needs to work for a variable made out of 2 words, like a_b
+// // § Start without worrying about the ✅. Tackle that only after you have the variable
+// // name conversion working 😉
+// // Afterwards, test with your own test data! GOOD LUCK 😀
 
 
-document.body.append(document.createElement('textarea')); //creates textarea
-document.body.append(document.createElement('button'));//creates button
+// document.body.append(document.createElement('textarea')); //creates textarea
+// document.body.append(document.createElement('button'));//creates button
 
-document.querySelector('button').addEventListener('click', function () { //add event listener that takes the value from the text area
-  const text = document.querySelector('textarea').value;
-  console.log(text);
-  const rows = text.split('\n') //creates an array where it removes the enter
-  console.log(rows); //Array(5) [ "first_name", "Some_Variable", "  calculate_AGE", "delayed_departure", "" ]
+// document.querySelector('button').addEventListener('click', function () { //add event listener that takes the value from the text area
+//   const text = document.querySelector('textarea').value;
+//   console.log(text);
+//   const rows = text.split('\n') //creates an array where it removes the enter
+//   console.log(rows); //Array(5) [ "first_name", "Some_Variable", "  calculate_AGE", "delayed_departure", "" ]
 
 //   for (const row of rows) {
 //     const [first, second] = row.toLowerCase().trim().split('_'); //Creates an array with 2 words by splitting anything _. Then everything is lowercased and trimmed by removing the whitespace.
@@ -560,14 +560,71 @@ document.querySelector('button').addEventListener('click', function () { //add e
 // });
 
 
-  for (const [i, row] of rows.entries()) { //row.entries() allows us to access the array
-    const [first, second] = row.toLowerCase().trim().split('_'); //Creates an array with 2 words by splitting anything _. Then everything is lowercased and trimmed by removing the whitespace.
-    // console.log(row, first, second); //Ex for the first row: first_name first name
-    const output = `${first}${second.replace(
-      second[0],
-      second[0].toUpperCase() //replace the second word with an uppercase
-    )}`;
-    // console.log(output);
-    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`); //insert the index
+//   for (const [i, row] of rows.entries()) { //row.entries() allows us to access the array
+//     const [first, second] = row.toLowerCase().trim().split('_'); //Creates an array with 2 words by splitting anything _. Then everything is lowercased and trimmed by removing the whitespace.
+//     // console.log(row, first, second); //Ex for the first row: first_name first name
+//     const output = `${first}${second.replace(
+//       second[0],
+//       second[0].toUpperCase() //replace the second word with an uppercase
+//     )}`;
+//     // console.log(output);
+//     console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`); //insert the index
+//   }
+// });
+
+//Coding Challange #14
+// Let's build a simple poll app!
+// A poll has a question, an array of options from which people can choose, and an array with the number of replies for each option. This data is stored in the starter 'poll' object below.
+// Your tasks:
+// 1. Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
+// 1.1. Display a prompt window for the user to input the number of the
+// selected option. The prompt should look like this: What is your favourite programming language?
+// 0: JavaScript
+// 1: Python
+// 2: Rust
+// 3: C++
+// (Write option number)
+// 1.2. Based on the input number, update the 'answers' array property. For example, if the option is 3, increase the value at position 3 of the array by 1. Make sure to check if the input is a number and if the number makes sense (e.g. answer 52 wouldn't make sense, right?)
+// 2. Call this method whenever the user clicks the "Answerpoll" button.
+// 3. Create a method 'displayResults' which displays the poll results. The
+// method takes a string as an input (called 'type'), which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log(). This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1".
+// 4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
+// 5. Bonus:Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option. Do not put the arrays in the poll object! So what should the this keyword look like in this situation?
+
+// Test data for bonus:
+// § Data1:[5,2,3]
+// § Data2:[1,5,3,9,6,1]
+
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  answers: new Array(4).fill(0), //This takes in the poll results
+  //This generates [0, 0, 0, 0]
+  registerNewAnswer() {
+    //Prompt converted to a number that displays the question seperating it by an enter and then joining the arrays but seperating it by an enter. This gets the answer.
+    const answer = Number(prompt(`${this.question}\n${this.options.join('\n')}\n(Write Option Number)`));
+    console.log(answer);
+    
+  //Register Answer
+    typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++; //Short circuiting so that the the first 2 conditions apply then it will increase the number for the answer
+
+    // console.log(this.answers);
+    this.displayResults();
+    this.displayResults('string');
+  },
+  displayResults(type = 'array') {
+    if(type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string'){
+      console.log(`Poll results are ${this.answers.join(', ')}`);
+
+    }
   }
-});
+};
+
+poll.registerNewAnswer();
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll)); //bind(poll object) is necessary because it would point to the .poll button instead due to the 'this' keyword in line 603
+
+//Bonus: Using the call method, it replaces the 'this' keyword in the function displayResults with the array below in the new object
+poll.displayResults.call({answers: [5, 2, 3]}, 'string'); //Array(4) [ 1, 0, 0, 0 ] Poll results are 5, 2, 3
+poll.displayResults.call({answers: [1, 5, 3, 9, 6, 1] }); //Array(6) [ 1, 5, 3, 9, 6, 1 ]
