@@ -696,15 +696,8 @@ calcAverageHumanAge(dogAges2);
 // Test data:
 // § Data1:[5,2,4,1,15,8,3] § Data2:[16,6,10,5,6,1,4]
 
-const calcAverageHumanAgeArrow = dogAges => dogAges.map(dogAge => {
-      if (dogAge <= 2) {
-        humanAge = 2 * dogAge;
-        return humanAge;
-      } else {
-        humanAge = 16 + dogAge * 4;
-        return humanAge;
-      }
-}).filter(age => age >= 18).reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+const calcAverageHumanAgeArrow = dogAges => dogAges.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
+.filter(age => age >= 18).reduce((acc, age, i, arr) => acc + age / arr.length, 0);
 
 const avg1 = calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
