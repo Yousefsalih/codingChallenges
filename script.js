@@ -595,52 +595,55 @@
 // § Data1:[5,2,3]
 // § Data2:[1,5,3,9,6,1]
 
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  answers: new Array(4).fill(0), //This takes in the poll results
-  //This generates [0, 0, 0, 0]
-  registerNewAnswer() {
-    //Prompt converted to a number that displays the question seperating it by an enter and then joining the arrays but seperating it by an enter. This gets the answer.
-    const answer = Number(prompt(`${this.question}\n${this.options.join('\n')}\n(Write Option Number)`));
-    console.log(answer);
-    
-  //Register Answer
-    typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++; //Short circuiting so that the the first 2 conditions apply then it will increase the number for the answer
-
-    // console.log(this.answers);
-    this.displayResults();
-    this.displayResults('string');
-  },
-  displayResults(type = 'array') {
-    if(type === 'array') {
-      console.log(this.answers);
-    } else if (type === 'string'){
-      console.log(`Poll results are ${this.answers.join(', ')}`);
-
-    }
-  }
-};
-
-poll.registerNewAnswer();
-document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll)); //bind(poll object) is necessary because it would point to the .poll button instead due to the 'this' keyword in line 603
-
-//Bonus: Using the call method, it replaces the 'this' keyword in the function displayResults with the array below in the new object
-poll.displayResults.call({answers: [5, 2, 3]}, 'string'); //Array(4) [ 1, 0, 0, 0 ] Poll results are 5, 2, 3
-poll.displayResults.call({answers: [1, 5, 3, 9, 6, 1] }); //Array(6) [ 1, 5, 3, 9, 6, 1 ]
-
-// Coding Challenge #15
-// This is more of a thinking challenge than a coding challenge 🤓 Your tasks:
-// 1. Take the IIFE below and at the end of the function,attach an event listener that changes the color of the selected h1 element ('header') to blue, each time the body element is clicked. Do not select the h1 element again!
-// 2. And now explain to yourself (or some one around you) why this worked!Take all the time you need. Think about when exactly the callback function is executed, and what that means for the variables involved in this example.
-
-(function () {
-const header = document.querySelector('h1'); header.style.color = 'red';
-
-document.querySelector('body').addEventListener('click', function() {
-  header.style.color = 'blue'
-});
-})();
 
 //The header is changed to red the first time the function is executed (IIFE), which creates the variables. Now the function is finished executing and waiting for the click to happen. Because of the click, a new function is being called which changes the header to blue. This is due to closure.
 
+//Coding Challange #16
+// Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners about their dog's age, and stored the data into an array (one array for each). For now, they are just interested in knowing whether a dog is an adult or a puppy.
+// A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years old.
+// Your tasks:
+// Create a function 'checkDogs', which accepts 2 arrays of dog's ages ('dogsJulia' and 'dogsKate'), and does the following things:
+// 1. Julia found out that the owners of the first and the last two dogs actually have cats, not dogs! So create a shallow copy of Julia's array, and remove the cat ages from that copied array (because it's a bad practice to mutate function parameters)
+// 2. Create an array with both Julia's (corrected) and Kate's data
+// 3. For each remaining dog,log to the console whether it's an adult ("Dognumber1
+// is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy   ")
+// 4. Run the function for both test data sets
+// Test data:
+// § Data 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3] 
+//§ Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
+const dogsJulia = [3, 5, 2, 12, 7];
+const dogsKate = [4, 1, 15, 8, 3];
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  //Update the correct dog list
+  console.log(dogsJulia);
+  const slicedJulia = dogsJulia.slice(1, -2);
+  console.log(slicedJulia);
+  //alternatively to the above
+  // const slicedJulia = dogsJulia.slice()
+  // slicedJulia.splice(0, 1);
+  // slicedJulia.splice(-2);
+
+  //Combine two arrays
+  const juliaCorrectedAndKateArray = slicedJulia.concat(dogsKate);
+  console.log(juliaCorrectedAndKateArray);
+  //Print string for each array item
+  juliaCorrectedAndKateArray.forEach(function (dogAge, index) {
+    dogAge >= 5
+      ? console.log(
+          `Dog number ${index + 1} is an adult and is ${dogAge} years old`
+        )
+      : console.log(
+          `Dog number ${index + 1} is a puppy and is ${dogAge} years old`
+        );
+    //Using an if else statement
+    // if (dogAge >= 5) {
+    //   console.log(`Dog number ${index + 1} is an adult and is ${dogAge} years old`);
+    // } else {
+    //   console.log(`Dog number ${index + 1} is a puppy and is ${dogAge} years old`);
+    // }
+  });
+}
+
+//Calling the function
+checkDogs(dogsJulia, dogsKate);
