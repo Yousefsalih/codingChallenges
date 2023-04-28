@@ -611,46 +611,46 @@
 // Test data:
 // § Data 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3] 
 //§ Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
-const dogsJulia = [3, 5, 2, 12, 7];
-const dogsKate = [4, 1, 15, 8, 3];
+// const dogsJulia = [3, 5, 2, 12, 7];
+// const dogsKate = [4, 1, 15, 8, 3];
 
-const dogsJulia2 = [9, 16, 6, 8, 3];
-const dogsKate2 = [10, 5, 6, 1, 4]
+// const dogsJulia2 = [9, 16, 6, 8, 3];
+// const dogsKate2 = [10, 5, 6, 1, 4]
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  //Update the correct dog list
-  console.log(dogsJulia);
-  const slicedJulia = dogsJulia.slice(1, -2);
-  console.log(slicedJulia);
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   //Update the correct dog list
+//   console.log(dogsJulia);
+//   const slicedJulia = dogsJulia.slice(1, -2);
+//   console.log(slicedJulia);
   //alternatively to the above
   // const slicedJulia = dogsJulia.slice()
   // slicedJulia.splice(0, 1);
   // slicedJulia.splice(-2);
 
   //Combine two arrays
-  const juliaCorrectedAndKateArray = slicedJulia.concat(dogsKate);
-  console.log(juliaCorrectedAndKateArray);
-  //Print string for each array item
-  juliaCorrectedAndKateArray.forEach(function (dogAge, index) {
-    dogAge >= 5
-      ? console.log(
-          `Dog number ${index + 1} is an adult and is ${dogAge} years old`
-        )
-      : console.log(
-          `Dog number ${index + 1} is a puppy and is ${dogAge} years old`
-        );
+  // const juliaCorrectedAndKateArray = slicedJulia.concat(dogsKate);
+  // console.log(juliaCorrectedAndKateArray);
+  // //Print string for each array item
+  // juliaCorrectedAndKateArray.forEach(function (dogAge, index) {
+  //   dogAge >= 5
+  //     ? console.log(
+  //         `Dog number ${index + 1} is an adult and is ${dogAge} years old`
+  //       )
+  //     : console.log(
+  //         `Dog number ${index + 1} is a puppy and is ${dogAge} years old`
+  //       );
     //Using an if else statement
     // if (dogAge >= 5) {
     //   console.log(`Dog number ${index + 1} is an adult and is ${dogAge} years old`);
     // } else {
     //   console.log(`Dog number ${index + 1} is a puppy and is ${dogAge} years old`);
     // }
-  });
-}
+//   });
+// }
 
 //Calling the function
-checkDogs(dogsJulia, dogsKate);
-checkDogs(dogsJulia2, dogsKate2);
+// checkDogs(dogsJulia, dogsKate);
+// checkDogs(dogsJulia2, dogsKate2);
 
 //Coding Challange #17
 
@@ -665,30 +665,30 @@ checkDogs(dogsJulia2, dogsKate2);
 // § Data1:[5,2,4,1,15,8,3] 
 // § Data2:[16,6,10,5,6,1,4]
 
-const dogAges1 = [5,2,4,1,15,8,3];
-const dogAges2 = [16,6,10,5,6,1,4];
-let humanAge;
+// const dogAges1 = [5,2,4,1,15,8,3];
+// const dogAges2 = [16,6,10,5,6,1,4];
+// let humanAge;
 
-const calcAverageHumanAge = function (dogAges) {
-  const humanAgeArray = dogAges.map(function(dogAge){
-    if (dogAge <= 2) {
-      humanAge = 2 * dogAge;
-      return humanAge
-    } else {
-      humanAge = 16 + dogAge * 4;
-      return humanAge
-    }
-  })
-  const adults = humanAgeArray.filter(age => age >= 18)
-  const sumValue = adults.reduce(function(acc, cur){
-    return acc +cur
-  }, 0)
-  const averageHumanAge = sumValue / adults.length
-  console.log(averageHumanAge);
-}
+// const calcAverageHumanAge = function (dogAges) {
+//   const humanAgeArray = dogAges.map(function(dogAge){
+//     if (dogAge <= 2) {
+//       humanAge = 2 * dogAge;
+//       return humanAge
+//     } else {
+//       humanAge = 16 + dogAge * 4;
+//       return humanAge
+//     }
+//   })
+//   const adults = humanAgeArray.filter(age => age >= 18)
+//   const sumValue = adults.reduce(function(acc, cur){
+//     return acc +cur
+//   }, 0)
+//   const averageHumanAge = sumValue / adults.length
+//   console.log(averageHumanAge);
+// }
 
-calcAverageHumanAge(dogAges1);
-calcAverageHumanAge(dogAges2);
+// calcAverageHumanAge(dogAges1);
+// calcAverageHumanAge(dogAges2);
 
 //Coding Challange #18
 
@@ -696,12 +696,12 @@ calcAverageHumanAge(dogAges2);
 // Test data:
 // § Data1:[5,2,4,1,15,8,3] § Data2:[16,6,10,5,6,1,4]
 
-const calcAverageHumanAgeArrow = dogAges => dogAges.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
-.filter(age => age >= 18).reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+// const calcAverageHumanAgeArrow = dogAges => dogAges.map(dogAge => (dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4))
+// .filter(age => age >= 18).reduce((acc, age, i, arr) => acc + age / arr.length, 0);
 
-const avg1 = calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
-const avg2 = calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
-console.log(avg1, avg2);
+// const avg1 = calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
+// const avg2 = calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
+// console.log(avg1, avg2);
 
 //Coding Challange #19
 
@@ -723,30 +723,30 @@ console.log(avg1, avg2);
 // § Being within a range 10% above and below the recommended portion means: current > (recommended * 0.90) && current < (recommended * 1.10). Basically, the current portion should be between 90% and 110% of the recommended portion.
 // Test data:
 
-const dogs = [
-{ weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
-{ weight: 8, curFood: 200, owners: ['Matilda'] },
-{ weight: 13, curFood: 275, owners: ['Sarah', 'John'] }, 
-{ weight: 32, curFood: 340, owners: ['Michael'] },
-];
+// const dogs = [
+// { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+// { weight: 8, curFood: 200, owners: ['Matilda'] },
+// { weight: 13, curFood: 275, owners: ['Sarah', 'John'] }, 
+// { weight: 32, curFood: 340, owners: ['Michael'] },
+// ];
 
-//#1
-dogs.forEach((dog) => {
-  dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28);
-  const sarahDog = dog.owners.includes('Sarah') //#2
-  if (sarahDog) { //#2
-    console.log(dog.curFood);//275
-    console.log(dog.recommendedFood); //191
-    const goodRangeAbove =  dog.recommendedFood + (dog.recommendedFood * 0.10)
-    const goodRangeBelow = dog.recommendedFood - (dog.recommendedFood * 0.10)
-    if (dog.curFood > goodRangeAbove) {
-      console.log(`Sarah's Dog is eating too much`);
-    } else if (dog.curFood < goodRangeBelow) {
-      console.log(`Sarah's Dog is eating too little`);
-    }
-  }
+// //#1
+// dogs.forEach((dog) => {
+//   dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28);
+//   const sarahDog = dog.owners.includes('Sarah') //#2
+//   if (sarahDog) { //#2
+//     console.log(dog.curFood);//275
+//     console.log(dog.recommendedFood); //191
+//     const goodRangeAbove =  dog.recommendedFood + (dog.recommendedFood * 0.10)
+//     const goodRangeBelow = dog.recommendedFood - (dog.recommendedFood * 0.10)
+//     if (dog.curFood > goodRangeAbove) {
+//       console.log(`Sarah's Dog is eating too much`);
+//     } else if (dog.curFood < goodRangeBelow) {
+//       console.log(`Sarah's Dog is eating too little`);
+//     }
+//   }
 
-})
+// })
 
 //#3
 // const ownersEatTooLittle = [];
@@ -790,39 +790,39 @@ dogs.forEach((dog) => {
 // console.log(filteredNewRecommend);
 
 //#2
-const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
-console.log(dogSarah);
-console.log(`Sarah's dog is eating too ${dogSarah.curFood > dogSarah.recommendedFood ? 'much' : 'little'}`);
+// const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+// console.log(dogSarah);
+// console.log(`Sarah's dog is eating too ${dogSarah.curFood > dogSarah.recommendedFood ? 'much' : 'little'}`);
 
-//3
-// const ownersEatTooMuch = dogs.filter(dog => dog.curFood > dog.recommendedFood).map(dog => dog.owners).flat();
-const ownersEatTooMuch = dogs
-  .filter((dog) => dog.curFood > dog.recommendedFood)
-  .flatMap((dog) => dog.owners)
-console.log(ownersEatTooMuch);
+// //3
+// // const ownersEatTooMuch = dogs.filter(dog => dog.curFood > dog.recommendedFood).map(dog => dog.owners).flat();
+// const ownersEatTooMuch = dogs
+//   .filter((dog) => dog.curFood > dog.recommendedFood)
+//   .flatMap((dog) => dog.owners)
+// console.log(ownersEatTooMuch);
 
-const ownersEatTooLittle = dogs
-  .filter((dog) => dog.curFood < dog.recommendedFood)
-  .flatMap((dog) => dog.owners);
-console.log(ownersEatTooLittle);
+// const ownersEatTooLittle = dogs
+//   .filter((dog) => dog.curFood < dog.recommendedFood)
+//   .flatMap((dog) => dog.owners);
+// console.log(ownersEatTooLittle);
 
-//4
-console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much`);
-console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little`);
+// //4
+// console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much`);
+// console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little`);
 
-//5
-console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));//false
+// //5
+// console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));//false
 
-//6
-const checkEatingOkay = dog => dog.curFood > dog.recommendedFood * 0.9 && dog.curFood < dog.recommendedFood * 1.1;
-console.log(dogs.some(checkEatingOkay))//true
+// //6
+// const checkEatingOkay = dog => dog.curFood > dog.recommendedFood * 0.9 && dog.curFood < dog.recommendedFood * 1.1;
+// console.log(dogs.some(checkEatingOkay))//true
 
-//7
-console.log(dogs.filter(checkEatingOkay));
+// //7
+// console.log(dogs.filter(checkEatingOkay));
 
-//8
-const dogsSorted = dogs.slice().sort((a, b) => a.recommendedFood-b.recommendedFood)
-console.log(dogsSorted);
+// //8
+// const dogsSorted = dogs.slice().sort((a, b) => a.recommendedFood-b.recommendedFood)
+// console.log(dogsSorted);
 
 //Coding Challange #20 Object Oriented Programming (OOP)
 
@@ -836,27 +836,78 @@ console.log(dogsSorted);
 // § Data car 2: 'Mercedes' going at 95 km/h
 // GOOD LUCK 😀
 
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// }
+
+// const car1 = new Car('BMW', 120)
+// const car2 = new Car('Mercedes', 95)
+
+// Car.prototype.accelerate = function() {
+//   this.speed += 10;
+//   console.log(`${this.make} is going at ${this.speed} km/h`);
+// }
+
+// Car.prototype.brake = function() {
+//   this.speed -= 5;
+//   console.log(`${this.make} is going at ${this.speed} km/h`);
+// }
+
+// car1.accelerate(); //130
+// car1.brake();//125
+// car1.accelerate();//135
+// car1.accelerate();//145
+
+// car2.accelerate();//Mercedes is going at 105 km/h
+
+//Coding Challange #21 : ES6 Classes
+//Your tasks:
+// 1. Re-create Challenge#20,but this time using an ES6 class(call it 'CarCl')
+// 2. Add a getter called 'speedUS' which returns the current speed in mi/h(divide
+// by 1.6)
+// 3. Add a setter called 'speedUS' which sets the current speed in mi/h(but
+// converts it to km/h before storing the value, by multiplying the input by 1.6)
+// 4. Create a new car and experiment with the 'accelerate'and'brake'
+// methods, and with the getter and setter.
+// Test data:
+// § Data car 1: 'Ford' going at 120 km/h GOOD LUCK 😀
+
+class CarlCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+  
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
 }
 
-const car1 = new Car('BMW', 120)
-const car2 = new Car('Mercedes', 95)
+const ford = new CarlCl('Ford', 120)
 
-Car.prototype.accelerate = function() {
-  this.speed += 10;
-  console.log(`${this.make} is going at ${this.speed} km/h`);
-}
+console.log(ford); //Object { make: "Ford", speed: 120 }
+console.log(ford.speedUS); //75 getting it to miles per hour
+// console.log(ford.speedUS(1.6)); Will not work
+ford.speedUS = 50; //setting the speed
+console.log(ford); //Object { make: "Ford", speed: 80 }
+console.log(ford.accelerate()); //Ford is going at 90 km/h script.js:884:13
+console.log(ford.brake()); //Ford is going at 85 km/h script.js:889:13
 
-Car.prototype.brake = function() {
-  this.speed -= 5;
-  console.log(`${this.make} is going at ${this.speed} km/h`);
-}
-
-car1.accelerate(); //130
-car1.brake();//125
-car1.accelerate();//135
-car1.accelerate();//145
-
-car2.accelerate();//Mercedes is going at 105 km/h
+console.log(ford.speed); //85
+console.log(ford.accelerate());//Ford is going at 95 km/h script.js:884:13
+console.log(ford.speed);//95
